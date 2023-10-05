@@ -19,12 +19,14 @@ def add_headlines() -> str:
         html_str += f"""<h3>{headline["title"]}</h3>
         <p>{headline["description"]}</p>
         <i>Source: <a src="{headline["url"]}">{headline["source"]["name"]}</a></i><br /><br />"""
-    
+
     return html_str
+
 
 def add_fun_fact() -> str:
     fun_fact = get_fun_fact()[0]
     return f"<h2>Fun Fact</h2>{fun_fact}<br /><br />"
+
 
 def add_weather(zip_code: str = "07728"):
     hour_data = get_weather(zip_code)
@@ -41,10 +43,12 @@ def add_weather(zip_code: str = "07728"):
 
     return html_str
 
+
 def add_joke():
     joke = get_joke()
 
     return f"<h2>Chuck Norris Update</h2><p>{joke}</p>"
+
 
 def add_exchange_rate() -> str:
     usd_eur = get_exchange_rate("USD_EUR")
@@ -52,7 +56,7 @@ def add_exchange_rate() -> str:
     usd_inr = get_exchange_rate("USD_INR")
     usd_jpy = get_exchange_rate("USD_JPY")
     usd_btc = get_exchange_rate("USD_BTC")
-    
+
     return f"""<h2>Exchange Rates:</h2><br />
     $1 USD = <br />
     €{usd_eur} EUR<br />
@@ -61,6 +65,13 @@ def add_exchange_rate() -> str:
     ¥{usd_jpy} JPY<br />
     ₿{usd_btc} BTC<br /><br />"""
 
+
 if __name__ == "__main__":
-    html_str = add_weather() + add_joke() + add_exchange_rate() + add_headlines() + add_fun_fact()
-    send_mail(os.environ["RECIPIENTS"], body=html_str) # ,adil.rasiyani@gmail.com
+    html_str = (
+        add_weather()
+        + add_joke()
+        + add_exchange_rate()
+        + add_headlines()
+        + add_fun_fact()
+    )
+    send_mail(os.environ["RECIPIENTS"], body=html_str)  # ,adil.rasiyani@gmail.com

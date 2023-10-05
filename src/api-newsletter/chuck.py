@@ -2,6 +2,7 @@ import requests
 
 CHUCK_API_URL = "https://api.chucknorris.io"
 
+
 def get_joke() -> str:
     url = CHUCK_API_URL + "/jokes/random"
     params = {
