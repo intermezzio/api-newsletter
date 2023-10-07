@@ -18,7 +18,7 @@ def add_headlines() -> str:
     for headline in top_headlines:
         html_str += f"""<h3>{headline["title"]}</h3>
         <p>{headline["description"]}</p>
-        <i>Source: <a src="{headline["url"]}">{headline["source"]["name"]}</a></i><br /><br />"""
+        <i>Source: <a href="{headline["url"]}">{headline["source"]["name"]}</a></i><br /><br />"""
 
     return html_str
 
